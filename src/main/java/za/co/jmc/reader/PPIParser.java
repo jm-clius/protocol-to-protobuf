@@ -1,6 +1,8 @@
 package za.co.jmc.reader;
 
 import za.co.jmc.pcap.PPIHeader;
+import za.co.jmc.protocol.sgsap.SGsMsg;
+import za.co.jmc.protocol.sgsap.SGsMsgParser;
 import za.co.jmc.util.ExtendedDataInputStream;
 
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class PPIParser {
 
         switch (datalinkType){
             case SGS_AP:
-                //TODO: parse SGsAP here
+                final SGsMsg sGsMsg = SGsMsgParser.parse(extendedDataInputStream);
                 break;
             default:
                 // Unsupported user-defined datalink type
